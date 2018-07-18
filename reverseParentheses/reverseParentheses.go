@@ -6,12 +6,13 @@ import (
 )
 
 func main() {
-	fmt.Println(reverseParentheses("a(bc)de"))
+	fmt.Println(reverseParentheses("a(bcdefghijkl(mno)p)q"))
+	fmt.Println(reverseParentheses("abc(cba)ab(bac)c"))
 }
 
 func reverseParentheses(s string) string {
-	start := strings.Index(s, "(")
-	end := strings.Index(s, ")")
+	brackets := make([][]int, 0)
+
 	reverse := func(str string) string {
 		revstr := ""
 
@@ -22,5 +23,24 @@ func reverseParentheses(s string) string {
 		return revstr
 	}
 
-	return s[:start] + reverse(s[start+1:end]) + s[end+1:]
+	for i, char := range s {
+		switch {
+		case string(char) == "(":
+			brackets = append(brackets, []int{i})
+		case string(char) == ")":
+			for j := len(brackets) - 1; j >= 0; j-- {
+				if len(brackets[j]) < 2 {
+					brackets[j] = append(brackets[j], i)
+					break
+				}
+			}
+		}
+	}
+
+	for i := len(brackets) - 1; i >= 0; i-- {
+		start, end := brackets[i][0], brackets[i][1]+1
+		s = s[:start] + reverse(s[start:end]) + s[end:]
+	}
+
+	return strings.Replace(strings.Replace(s, ")", "", -1), "(", "", -1)
 }
