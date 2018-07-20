@@ -9,8 +9,7 @@ func main() {
 	}))
 }
 
-func addBorder(picture []string) []string {
-	pic := make([]string, 0)
+func addBorder(picture []string) (pic []string) {
 	size := len(picture[0]) + 2
 	var edge string
 
@@ -19,9 +18,11 @@ func addBorder(picture []string) []string {
 	}
 
 	pic = append(pic, edge)
+
 	for _, item := range picture {
 		pic = append(pic, "*"+item+"*")
 	}
+
 	pic = append(pic, edge)
-	return pic
+	return
 }
