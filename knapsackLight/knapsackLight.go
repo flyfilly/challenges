@@ -19,7 +19,6 @@ func knapsackLight(value1 int, weight1 int, value2 int, weight2 int, maxW int) i
 		return value1
 	case weight2 <= maxW:
 		return value2
-
 	}
 
 	return 0
