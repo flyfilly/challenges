@@ -48,3 +48,12 @@ func TestCase5(t *testing.T) {
 		t.Errorf("\nTests failed!\nExpected:%v\nActual:%v", expected, actual)
 	}
 }
+
+func TestCase6(t *testing.T) {
+	expected := "CodeFighter"
+	actual := longestWord("You are the best!!!!!!!!!!!! CodeFighter ever!")
+
+	if expected != actual {
+		t.Errorf("\nTests failed!\nExpected:%v\nActual:%v", expected, actual)
+	}
+}
