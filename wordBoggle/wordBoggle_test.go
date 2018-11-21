@@ -115,3 +115,26 @@ func TestCase14(t *testing.T) {
 		t.Errorf("\nTests failed!\nExpected:%v\nActual:%v", expected, actual)
 	}
 }
+
+func TestCase15(t *testing.T) {
+	expected := []string{
+		"DOT", "LOIS", "SIT", "ZOTIS",
+	}
+
+	actual := wordBoggle([][]string{
+		{"X", "Q", "A", "D", "E"},
+		{"Z", "O", "T", "I", "S"},
+		{"I", "N", "D", "O", "L"},
+		{"Y", "R", "U", "N", "B"},
+		{"F", "A", "E", "H", "K"},
+		{"X", "Q", "A", "D", "E"},
+		{"Z", "O", "T", "I", "S"},
+	}, []string{
+		"ZOTIS", "SIT", "LOIS",
+		"DOT", "SLOB",
+	})
+
+	if !reflect.DeepEqual(expected, actual) {
+		t.Errorf("\nTests failed!\nExpected:%v\nActual:%v", expected, actual)
+	}
+}
